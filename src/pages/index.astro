@@ -1,9 +1,13 @@
 ---
-import './../styles/main.scss';
+import Layout from '@components/layouts/Layout.astro';
 ---
 
-<div>hello</div>
+<Layout title="hello">
+	<div>hello</div>
+</Layout>
 
 <style lang="scss">
-	@import '@styles/main.scss';
+	div {
+		font-size: 4rem;
+	}
 </style>

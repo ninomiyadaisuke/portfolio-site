@@ -1,0 +1,43 @@
+---
+type Props = {
+	title: string;
+	pageDescription?: string;
+	cardImage?: string;
+};
+
+const { title, pageDescription, cardImage } = Astro.props;
+---
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content={pageDescription} />
+	<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&family=Indie+Flower&family=Noto+Serif+JP:wght@900&display=swap"
+		rel="stylesheet"
+	/>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap"
+		rel="stylesheet"
+	/>
+	{/* Meta keywords */}
+	<meta
+		name="keywords"
+		content="Webデザイン,Webデザイン制作,ホームページデザイン,Webデザインギャラリー,Webデザインサンプル,Webサイト制作,Webデザイナー,デザイン事務所・制作会社"
+	/>
+	{/* Open Graph Protocol */}
+	<meta property="og:url" content="https://maedagumi.design/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content={title} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={pageDescription} />
+	<meta property="og:image" content={cardImage} />
+	{/* Twitter */}
+	<meta name="twitter:card" content="summary_large_image" />
+	<!-- Google tag (gtag.js) -->
+</head>

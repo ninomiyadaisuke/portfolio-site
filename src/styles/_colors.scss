@@ -1,0 +1,23 @@
+:root {
+	--primary-color: #103b8b;
+	--secondary-color: #db3c86;
+	--primary-overlay: rgba(255, 255, 255, 0.96);
+	--highlight-blue: rgb(35, 28, 199);
+	--text-color: #333333;
+	--gray-color: rgb(167, 167, 167);
+	--white: #ffffff;
+	--gradient-blue-pink: linear-gradient(
+			111deg,
+			rgb(4, 49, 150) 0%,
+			rgb(219, 60, 134) 100%
+		)
+		0% 0% no-repeat padding-box;
+	--gradient-light-dark-blue: linear-gradient(
+			93deg,
+			rgb(61, 86, 222) 0%,
+			rgb(31, 49, 149) 100%
+		)
+		0% 0% / auto auto no-repeat padding-box border-box;
+	--transparent-gradient-blue: transparent
+		linear-gradient(93deg, #3d56de 0%, #1f3195 100%) 0% 0% no-repeat padding-box;
+}

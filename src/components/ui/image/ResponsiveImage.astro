@@ -1,0 +1,41 @@
+---
+import { generateWidths } from '@libs/utils';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+type Props = {
+	src: ImageMetadata;
+	alt: string;
+	widths?: number[];
+	sizes?: string;
+	loading?: 'lazy' | 'eager';
+	decoding?: 'async' | 'sync';
+};
+
+const {
+	src,
+	alt,
+	widths = [src.width / 2],
+	sizes,
+	loading = 'lazy',
+	decoding = 'async'
+} = Astro.props;
+
+// Check if any width is greater than src.width and throw an error if true
+if (widths.some(width => width > src.width)) {
+	throw new Error(
+		"One or more widths provided are greater than the image's original width."
+	);
+}
+
+const sortWidths = generateWidths(widths);
+---
+
+<Image
+	src={src}
+	alt={alt}
+	widths={[...sortWidths, src.width]}
+	loading={loading}
+	decoding={decoding}
+	sizes={`(max-width:768px) ${sizes}`}
+/>

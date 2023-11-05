@@ -7,4 +7,8 @@ body {
 	line-height: 1.8;
 	display: flex;
 	font-size: 62.5%;
+	@include mq('custom1600') {
+		width: 1600px;
+		margin: 0 auto;
+	}
 }

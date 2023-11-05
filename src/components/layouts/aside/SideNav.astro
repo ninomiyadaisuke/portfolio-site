@@ -1,0 +1,75 @@
+---
+import SideNavImage from '@assets/images/sidenav_img.jpg';
+import ResponsiveImage from '@components/ui/image/ResponsiveImage.astro';
+import { Icon } from 'astro-icon';
+---
+
+<aside class="side-nav">
+	<div class="side-nav__container">
+		<div class="side-nav__logo">
+			<ResponsiveImage
+				src={SideNavImage}
+				alt="side-nav-image"
+				widths={[50, 100, 200]}
+				loading="eager"
+				decoding="sync"
+				sizes="50px, 100px"
+			/>
+		</div>
+		<ul class="side-nav__list">
+			<li class="side-nav__item">
+				<a href="https://github.com/ninomiyadaisuke">
+					<Icon class="side-nav__item_icon" pack="mdi" name="github" />
+				</a>
+			</li>
+		</ul>
+	</div>
+</aside>
+
+<style lang="scss">
+	.side-nav {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		&__container {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			background-color: var(--primary-color);
+		}
+		&__logo {
+			width: 50px;
+			object-fit: cover;
+		}
+		&__list {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-end;
+		}
+		&__item {
+			color: white;
+			padding-bottom: calc(2rem + 0.6667vw);
+			transition: color 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			&_icon {
+				width: calc(2vw + 2vh);
+				max-width: 40px;
+				border-radius: 50%;
+				background-color: black;
+				&:hover {
+					color: var(--secondary-color);
+				}
+			}
+		}
+		@include mq('md') {
+			&__logo {
+				width: 100px;
+				max-width: 60px;
+			}
+		}
+	}
+</style>

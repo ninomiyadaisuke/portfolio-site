@@ -3,6 +3,7 @@ import '@styles/main.scss';
 
 import SideNav from './aside/SideNav.astro';
 import Head from './head/Head.astro';
+import Header from './header/Header.astro';
 
 interface Props {
 	title: string;
@@ -16,13 +17,17 @@ const { title } = Astro.props;
 	<Head title={title} />
 	<body>
 		<SideNav />
-		<slot />
-	</body><style lang="scss">
-		body {
-			font-family: 'Zen Kaku Gothic New', sans-serif;
-			font-weight: 500;
-			color: #222327;
-			font-size: 16px;
-		}
-	</style>
+		<main>
+			<Header />
+			<slot />
+		</main>
+		<style lang="scss">
+			body {
+				font-family: 'Zen Kaku Gothic New', sans-serif;
+				font-weight: 500;
+				color: #222327;
+				font-size: 16px;
+			}
+		</style>
+	</body>
 </html>

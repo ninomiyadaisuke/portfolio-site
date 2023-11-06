@@ -1,0 +1,192 @@
+---
+
+---
+
+<header id="header">
+	<nav id="header__main-nav">
+		<div class="header__main-nav--hamburger">
+			<div class="line line-1"></div>
+			<div class="line line-2"></div>
+			<div class="line line-3"></div>
+		</div>
+		<ul class="header__main-nav--links">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Projects</a></li>
+			<li><a href="#">Skilis</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</nav>
+</header>
+
+<style lang="scss">
+	header#header {
+		background-color: var(--secondary-color);
+		height: 70px;
+		z-index: 2;
+		color: var(--white);
+	}
+
+	nav#header__main-nav {
+		height: 100%;
+	}
+
+	ul.header__main-nav--links {
+		/* just for demonstration purposes */
+		/* background-color: aqua; */
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	ul.header__main-nav--links li {
+		padding-right: 3vw;
+	}
+
+	ul.header__main-nav--links li a {
+		position: relative;
+		padding: 0.2rem 0.6rem;
+		font-size: calc(1rem + 0.66667vw);
+	}
+
+	ul.header__main-nav--links li a:link::before,
+	ul.header__main-nav--links li a:visited::before,
+	ul.header__main-nav--links li a:link::after,
+	ul.header__main-nav--links li a:visited::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 0.25rem;
+		background-color: white;
+
+		transform: scaleX(0);
+
+		transition: transform 0.6s cubic-bezier(1, 0, 0, 1);
+	}
+
+	ul.header__main-nav--links li a:link::before,
+	ul.header__main-nav--links li a:visited::before {
+		top: 0;
+		/* Transform origin is center by default */
+		transform-origin: left;
+	}
+
+	ul.header__main-nav--links li a:link::after,
+	ul.header__main-nav--links li a:visited::after {
+		bottom: 0;
+		transform-origin: right;
+	}
+
+	ul.header__main-nav--links li a:hover::before,
+	ul.header__main-nav--links li a:active::before,
+	ul.header__main-nav--links li a:hover::after,
+	ul.header__main-nav--links li a:active::after {
+		transform: scaleX(1);
+	}
+
+	@media screen and (max-width: 768px) {
+		header#header {
+			position: absolute;
+		}
+		nav#header__main-nav {
+			width: 30rem;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			right: -30rem;
+			background-color: var(--secondary-color);
+			text-align: center;
+		}
+
+		.clicked {
+			left: 55%;
+		}
+
+		.header__main-nav--hamburger {
+			width: 5rem;
+			height: 5rem;
+			position: fixed;
+			top: 2rem;
+			right: 3rem;
+			cursor: pointer;
+			background-color: var(--secondary-color);
+			padding: 1rem;
+			border-radius: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+		.line {
+			width: 100%;
+			height: 0.3rem;
+			background-color: white;
+			border-radius: 0.2rem;
+			transition: all 0.4s ease-in-out;
+		}
+
+		ul.header__main-nav--links {
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+		}
+
+		ul.header__main-nav--links li {
+			margin-bottom: 4vh;
+			margin-left: 6vw;
+		}
+
+		.clicked .line-1 {
+			transform: rotateZ(-405deg) translate(-0.8rem, 0.6rem);
+		}
+
+		.clicked .line-2 {
+			opacity: 0;
+		}
+		.clicked .line-3 {
+			transform: rotateZ(405deg) translate(-0.8rem, -0.6rem);
+		}
+
+		ul.header__main-nav--links li {
+			opacity: 0;
+		}
+
+		ul.header__main-nav--links li:nth-child(1) {
+			transition: all 0.5s ease-in-out 0.2s;
+		}
+
+		ul.header__main-nav--links li:nth-child(2) {
+			transition: all 0.5s ease-in-out 0.4s;
+		}
+
+		ul.header__main-nav--links li:nth-child(3) {
+			transition: all 0.5s ease-in-out 0.6s;
+		}
+
+		ul.header__main-nav--links li:nth-child(4) {
+			transition: all 0.5s ease-in-out 0.8s;
+		}
+
+		ul.header__main-nav--links li:nth-child(5) {
+			transition: all 0.5s ease-in-out 1s;
+		}
+		ul.header__main-nav--links li.fade {
+			opacity: 1;
+		}
+	}
+</style>
+
+<script>
+	const hamburgerContainer = document.querySelector('#header__main-nav');
+	const hamburger = document.querySelector('.header__main-nav--hamburger');
+	const links = document.querySelectorAll('.header__main-nav--links li');
+
+	hamburger!.addEventListener('click', () => {
+		hamburgerContainer!.classList.toggle('clicked');
+		links.forEach(link => {
+			link.classList.toggle('fade');
+		});
+	});
+</script>

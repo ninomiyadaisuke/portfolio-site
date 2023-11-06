@@ -10,10 +10,10 @@ import { Icon } from 'astro-icon';
 			<ResponsiveImage
 				src={SideNavImage}
 				alt="side-nav-image"
-				widths={[50, 100, 200]}
+				widths={[30, 60, 70, 140]}
 				loading="eager"
 				decoding="sync"
-				sizes="50px, 100px"
+				sizes="30px, 70px"
 			/>
 		</div>
 		<ul class="side-nav__list">
@@ -32,8 +32,9 @@ import { Icon } from 'astro-icon';
 		position: sticky;
 		top: 0;
 		left: 0;
-		height: 100vh;
+		height: 100dvh;
 		&__container {
+			position: relative;
 			height: 100%;
 			display: flex;
 			flex-direction: column;
@@ -41,10 +42,14 @@ import { Icon } from 'astro-icon';
 			background-color: var(--primary-color);
 		}
 		&__logo {
-			width: 50px;
+			width: 30px;
 			object-fit: cover;
 		}
 		&__list {
+			position: absolute;
+			bottom: 5%;
+			left: 50%;
+			transform: translateX(-50%);
 			height: 100%;
 			display: flex;
 			flex-direction: column;
@@ -53,10 +58,9 @@ import { Icon } from 'astro-icon';
 		}
 		&__item {
 			color: white;
-			padding-bottom: calc(2rem + 0.6667vw);
 			transition: color 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 			&_icon {
-				width: 40px;
+				width: 20px;
 				border-radius: 50%;
 				background-color: black;
 				&:hover {
@@ -66,8 +70,10 @@ import { Icon } from 'astro-icon';
 		}
 		@include mq('md') {
 			&__logo {
-				width: 100px;
-				max-width: 60px;
+				width: 70px;
+			}
+			&__item_icon {
+				width: 40px;
 			}
 		}
 	}

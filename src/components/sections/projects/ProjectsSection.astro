@@ -1,9 +1,26 @@
 ---
+import AssetManage from '@assets/images/projects/assets_manage.png';
 import SekiSou from '@assets/images/projects/sei_sou_demo.png';
 
 import ProjectCard from './ProjectCard.astro';
 
 const data = [
+	{
+		title: 'Project Title',
+		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		imageData: {
+			src: SekiSou,
+			alt: 'Project Image'
+		}
+	},
+	{
+		title: 'Project Title',
+		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		imageData: {
+			src: AssetManage,
+			alt: 'Project Image'
+		}
+	},
 	{
 		title: 'Project Title',
 		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
@@ -17,7 +34,7 @@ const data = [
 
 <section class="projects">
 	<h2>Projects</h2>
-	<div>
+	<div class="projects__container">
 		{
 			data.map(project => (
 				<ProjectCard
@@ -38,6 +55,19 @@ const data = [
 			font-size: 40px;
 			color: var(--white);
 			font-weight: 700;
+		}
+		&__container {
+			display: grid;
+			gap: 10px;
+		}
+		@include mq('custom900') {
+			&__container {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+			}
+			h2 {
+				text-align: center;
+			}
 		}
 	}
 </style>

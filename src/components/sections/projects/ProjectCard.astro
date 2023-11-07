@@ -15,7 +15,7 @@ type Props = {
 	};
 };
 
-const { imageData } = Astro.props;
+const { imageData, text, title } = Astro.props;
 ---
 
 <div class="card">
@@ -30,10 +30,9 @@ const { imageData } = Astro.props;
 		/>
 	</div>
 	<div class="card__content">
-		<h3>Smoking Websites</h3>
+		<h3>{title}</h3>
 		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt quis
-			cupiditate ducimus non esse?
+			{text}
 		</p>
 	</div>
 </div>
@@ -84,16 +83,28 @@ const { imageData } = Astro.props;
 			transform: scaleY(1);
 			transform-origin: top;
 		}
+
+		&:hover .card__img img {
+			transform: scaleY(0.98);
+			filter: grayscale(50%);
+		}
+
 		@include mq('md') {
 			&__content {
 				height: auto;
-				top: 60%;
-				left: 0;
+				top: 40%;
 				width: 80%;
-				padding: 15px;
+				max-width: 460px;
 			}
-			img {
-				max-width: 610px;
+		}
+		@include mq('custom900') {
+			&__content {
+				bottom: 0;
+				top: calc(70px + 180 * (100vw - 900px) / 700);
+				padding: 2vw;
+			}
+			h3 {
+				font-size: calc(20px + 20 * (100vw - 768px) / 832);
 			}
 		}
 	}

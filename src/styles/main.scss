@@ -8,7 +8,7 @@ body {
 	display: flex;
 	@include mq('custom1600') {
 		width: 1600px;
-		margin: 0 auto;
+		margin: 0 auto !important;
 	}
 }
 

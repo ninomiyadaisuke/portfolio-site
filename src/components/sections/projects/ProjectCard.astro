@@ -104,7 +104,15 @@ const { imageData, text, title } = Astro.props;
 				padding: 2vw;
 			}
 			h3 {
-				font-size: calc(20px + 20 * (100vw - 768px) / 832);
+				font-size: calc(20px + 20 * (100vw - 900px) / 700);
+			}
+		}
+		@include mq('custom1600') {
+			&__content {
+				top: 250px;
+			}
+			h3 {
+				font-size: 40px;
 			}
 		}
 	}

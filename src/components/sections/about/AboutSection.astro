@@ -1,0 +1,80 @@
+---
+import AboutImage from '@assets/images/about_img.jpg';
+import ResponsiveImage from '@components/ui/image/ResponsiveImage.astro';
+---
+
+<section id="about-me">
+	<div class="about-me__img">
+		<ResponsiveImage
+			src={AboutImage}
+			alt="About Image"
+			widths={[265, 530, 760, 1400]}
+			sizes="(width < 910px) 70vw, 39vw"
+			loading="eager"
+			decoding="sync"
+		/>
+	</div>
+	<div class="about-me__content">
+		<h2 class="about-me__content--title">About Me</h2>
+		<p class="about-me__content--para">
+			Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci laudantium
+			maiores aliquid magni debitis ipsum delectus impedit iure distinctio, sint tempora
+			asperiores odit tempore temporibus incidunt, non ex expedita sunt.
+		</p>
+	</div>
+</section>
+
+<style lang="scss">
+	section#about-me {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+		padding: 20px;
+		background-color: var(--secondary-color);
+	}
+
+	.about-me__img,
+	.about-me__content {
+		flex-basis: 400px;
+		padding: 20px;
+		flex-grow: 1;
+	}
+
+	.about-me__img img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.about-me__content--title {
+		font-size: 40px;
+		padding: 10px 0;
+		color: white;
+		text-transform: uppercase;
+		font-weight: 700;
+		position: relative;
+	}
+
+	.about-me__content--title::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		height: 3px;
+		width: 10%;
+		background-color: var(--primary-color);
+	}
+
+	.about-me__content--title,
+	.about-me__content--para {
+		margin-bottom: 40px;
+		letter-spacing: 2px;
+	}
+
+	.about-me__content--para {
+		font-size: 18px;
+		font-family: 'Zen Maru Gothic', sans-serif;
+	}
+</style>
+<!-- calc(52px + 48 * (100vw - 800px) / 1120); -->

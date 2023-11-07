@@ -1,0 +1,73 @@
+---
+import AssetManage from '@assets/images/projects/assets_manage.png';
+import SekiSou from '@assets/images/projects/sei_sou_demo.png';
+
+import ProjectCard from './ProjectCard.astro';
+
+const data = [
+	{
+		title: 'Project Title',
+		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		imageData: {
+			src: SekiSou,
+			alt: 'Project Image'
+		}
+	},
+	{
+		title: 'Project Title',
+		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		imageData: {
+			src: AssetManage,
+			alt: 'Project Image'
+		}
+	},
+	{
+		title: 'Project Title',
+		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		imageData: {
+			src: SekiSou,
+			alt: 'Project Image'
+		}
+	}
+];
+---
+
+<section class="projects">
+	<h2>Projects</h2>
+	<div class="projects__container">
+		{
+			data.map(project => (
+				<ProjectCard
+					title={project.title}
+					text={project.text}
+					imageData={project.imageData}
+				/>
+			))
+		}
+	</div>
+</section>
+
+<style lang="scss">
+	.projects {
+		padding: 0 calc(10px + 2vw) calc(10px + 2vw) calc(10px + 2vw);
+		background-color: var(--secondary-color);
+		h2 {
+			font-size: 40px;
+			color: var(--white);
+			font-weight: 700;
+		}
+		&__container {
+			display: grid;
+			gap: 10px;
+		}
+		@include mq('custom900') {
+			&__container {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+			}
+			h2 {
+				text-align: center;
+			}
+		}
+	}
+</style>

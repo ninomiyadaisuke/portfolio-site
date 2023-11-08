@@ -1,0 +1,27 @@
+---
+import Form from './reactUi/Form';
+
+const serviceId = import.meta.env.REACT_APP_EMAILJS_SERVICE_ID;
+const templateId = import.meta.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const publicId = import.meta.env.REACT_APP_EMAILJS_PUBLIC_ID;
+---
+
+<section id="contact">
+	<Form
+		client:visible
+		serviceId={serviceId}
+		templateId={templateId}
+		publicId={publicId}
+	/>
+</section>
+
+<style lang="scss">
+	section#contact {
+		height: 100vh;
+		background-image: url('/images/contact_img.jpg');
+		background-size: cover;
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+</style>

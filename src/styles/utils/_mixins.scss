@@ -58,3 +58,98 @@ $__breakpoints: (
 		}
 	}
 }
+
+@mixin skillsAnimation($percent) {
+	animation: skill-#{$percent} infinite 4s cubic-bezier(1, 0, 0, 1);
+	@if $percent == 10 {
+		@keyframes skill-10 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 10%;
+			}
+		}
+	} @else if $percent == 20 {
+		@keyframes skill-20 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 20%;
+			}
+		}
+	} @else if $percent == 30 {
+		@keyframes skill-30 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 30%;
+			}
+		}
+	} @else if $percent == 40 {
+		@keyframes skill-40 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 40%;
+			}
+		}
+	} @else if $percent == 50 {
+		@keyframes skill-50 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 50%;
+			}
+		}
+	} @else if $percent == 60 {
+		@keyframes skill-60 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 60%;
+			}
+		}
+	} @else if $percent == 70 {
+		@keyframes skill-70 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 70%;
+			}
+		}
+	} @else if $percent == 80 {
+		@keyframes skill-80 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 80%;
+			}
+		}
+	} @else if $percent == 90 {
+		@keyframes skill-90 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 90%;
+			}
+		}
+	} @else {
+		@keyframes skill-100 {
+			0% {
+				width: 0;
+			}
+			100% {
+				width: 100%;
+			}
+		}
+	}
+}

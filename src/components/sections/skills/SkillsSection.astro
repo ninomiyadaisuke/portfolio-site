@@ -1,0 +1,87 @@
+---
+const data = [
+	{
+		title: 'HTML / CSS',
+		progress: 90
+	},
+	{
+		title: 'JavaScript',
+		progress: 80
+	},
+	{
+		title: 'React',
+		progress: 80
+	},
+	{
+		title: 'Next',
+		progress: 80
+	},
+	{
+		title: 'Typescript',
+		progress: 70
+	},
+	{
+		title: 'SQL',
+		progress: 20
+	}
+];
+---
+
+<section class="skills">
+	<h2>My Skills</h2>
+	<div class="skills__container">
+		{
+			data.map(skill => (
+				<div>
+					<h3>{skill.title}</h3>
+					<div class={`skills__progress`}>
+						<span class={`skills__progress${skill.progress}`} />
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<style lang="scss">
+	.skills {
+		padding: calc(10px + 2vw);
+		background-color: var(--tertiary-color);
+		h2 {
+			font-size: 40px;
+			color: var(--white);
+			font-weight: 700;
+		}
+		h3 {
+			font-weight: 700;
+			font-size: 20px;
+		}
+		&__progress {
+			position: relative;
+			display: block;
+			padding: 5px;
+			border-radius: 30px;
+			background-color: var(--primary-color);
+			width: 100%;
+			margin-bottom: 20px;
+			span {
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+				height: 20px;
+				border-radius: 10px;
+				background-color: var(--secondary-color);
+			}
+		}
+		@include mq('custom900') {
+			h2 {
+				text-align: center;
+			}
+			&__container {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				column-gap: calc(10px + 2vw);
+			}
+		}
+	}
+</style>

@@ -1,0 +1,56 @@
+---
+
+---
+
+<section id="contact">
+	<form class="contact__form">
+		<input type="text" placeholder="Name" />
+		<input type="email" placeholder="Email" />
+		<input type="text" placeholder="Subject" />
+		<textarea name="message" placeholder="Message"></textarea>
+		<input type="submit" value="Submit" />
+	</form>
+</section>
+
+<style lang="scss">
+	section#contact {
+		height: 100vh;
+		background-image: url('/images/contact_img.jpg');
+		background-size: cover;
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+	.contact__form {
+		flex-basis: 40rem;
+		display: flex;
+		flex-direction: column;
+		background-color: var(--tertiary-color-m);
+	}
+
+	.contact__form input,
+	.contact__form textarea {
+		color: white;
+		letter-spacing: 0.2rem;
+		padding: 2rem;
+		border: none;
+		border-bottom: var(--secondary-color) solid 0.1rem;
+		&::placeholder {
+			color: white;
+		}
+	}
+
+	input:-webkit-autofill {
+		-webkit-text-fill-color: var(--white);
+		transition: background-color 500000000000s ease-in-out 0s;
+	}
+
+	.contact__form textarea {
+		height: 30vh;
+	}
+
+	input[type='submit'] {
+		border: none;
+		cursor: pointer;
+	}
+</style>

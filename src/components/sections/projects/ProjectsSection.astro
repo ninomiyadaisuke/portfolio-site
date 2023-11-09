@@ -1,32 +1,46 @@
 ---
 import AssetManage from '@assets/images/projects/assets_manage.png';
+import FramerMotion from '@assets/images/projects/framer-motion.png';
+import Portfolio from '@assets/images/projects/portfolio-site.png';
 import SekiSou from '@assets/images/projects/sei_sou_demo.png';
 
 import ProjectCard from './ProjectCard.astro';
 
 const data = [
 	{
-		title: 'Project Title',
-		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		title: "Daisuke's Portfolio",
+		text: 'このサイトです。AstrojsとReact、Emailjsを使用して作成しました。',
+		href: 'https://portfolio-site-henna-delta.vercel.app/',
 		imageData: {
-			src: SekiSou,
-			alt: 'Project Image'
+			src: Portfolio,
+			alt: 'portfolio image'
 		}
 	},
 	{
-		title: 'Project Title',
-		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		title: '資産管理アプリ',
+		text: '資産管理アプリです。株式資産を管理するために作成しました。Nextjs、supabaseを使用して作成しました。デモボタよりログインできます。',
+		href: 'https://assets-management-app.vercel.app/auth/login',
 		imageData: {
 			src: AssetManage,
-			alt: 'Project Image'
+			alt: 'AssetManage Image'
 		}
 	},
 	{
-		title: 'Project Title',
-		text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sunt cupiditate ducimus non esse?',
+		title: 'アニメーションサイト',
+		text: 'アニメーションライブラリ「framer-motion」の勉強のために作成しました。Nextjs、Typescript、framer-motionを使用しています。',
+		href: 'https://framer-motion-study.vercel.app/',
+		imageData: {
+			src: FramerMotion,
+			alt: 'AssetManage Image'
+		}
+	},
+	{
+		title: '積奏 デモサイト',
+		text: '実在のショップサイト「積奏」のデモサイトを作成しました。ベーシック認証を設定しています（ユーザー名：test、パスワード：test1234）。',
+		href: 'https://seki-sou-demo.vercel.app/',
 		imageData: {
 			src: SekiSou,
-			alt: 'Project Image'
+			alt: 'Sekisou demo Image'
 		}
 	}
 ];
@@ -37,11 +51,13 @@ const data = [
 	<div class="projects__container">
 		{
 			data.map(project => (
-				<ProjectCard
-					title={project.title}
-					text={project.text}
-					imageData={project.imageData}
-				/>
+				<a href={project.href} target="_blank" rel="noopener noreferrer">
+					<ProjectCard
+						title={project.title}
+						text={project.text}
+						imageData={project.imageData}
+					/>
+				</a>
 			))
 		}
 	</div>

@@ -10,11 +10,11 @@
 			<div class="line line-3"></div>
 		</div>
 		<ul class="header__main-nav--links">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Projects</a></li>
-			<li><a href="#">Skilis</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><a href="#showcase">Home</a></li>
+			<li><a href="#about-me">About</a></li>
+			<li><a href="#skills">Skilis</a></li>
+			<li><a href="#projects">Projects</a></li>
+			<li><a href="#contact">Contact</a></li>
 		</ul>
 	</nav>
 </header>
@@ -182,6 +182,15 @@
 	const hamburgerContainer = document.querySelector('#header__main-nav');
 	const hamburger = document.querySelector('.header__main-nav--hamburger');
 	const links = document.querySelectorAll('.header__main-nav--links li');
+
+	links.forEach(link => {
+		link.addEventListener('click', () => {
+			hamburgerContainer!.classList.toggle('clicked');
+			links.forEach(link => {
+				link.classList.toggle('fade');
+			});
+		});
+	});
 
 	hamburger!.addEventListener('click', () => {
 		hamburgerContainer!.classList.toggle('clicked');

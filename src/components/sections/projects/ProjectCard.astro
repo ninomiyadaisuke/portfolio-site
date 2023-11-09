@@ -64,6 +64,7 @@ const { imageData, text, title } = Astro.props;
 			font-family: 'Zen Maru Gothic', sans-serif;
 		}
 		&__content {
+			font-family: 'Noto Sans JP', sans-serif;
 			padding: 1vw;
 			color: var(--white);
 			position: absolute;
@@ -104,7 +105,7 @@ const { imageData, text, title } = Astro.props;
 				padding: 2vw;
 			}
 			h3 {
-				font-size: calc(20px + 20 * (100vw - 900px) / 700);
+				font-size: calc(20px + 10 * (100vw - 900px) / 700);
 			}
 		}
 		@include mq('custom1600') {
@@ -112,7 +113,7 @@ const { imageData, text, title } = Astro.props;
 				top: 250px;
 			}
 			h3 {
-				font-size: 40px;
+				font-size: 30px;
 			}
 		}
 	}

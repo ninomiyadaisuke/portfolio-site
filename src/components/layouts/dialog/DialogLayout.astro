@@ -1,0 +1,47 @@
+---
+
+---
+
+<dialog class="dialog">
+	<slot />
+</dialog>
+
+<style lang="scss">
+	.dialog {
+		width: 80%;
+		border: 0;
+		position: fixed;
+		inset: 0;
+		padding: 0;
+		transition: opacity 0.3s ease-in-out;
+		@include mq('custom900') {
+			width: 90%;
+		}
+	}
+	.dialog:not([open]) {
+		opacity: 0;
+	}
+	.dialog::backdrop {
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+	html:has(dialog[open]) {
+		overflow: hidden;
+	}
+</style>
+
+<script>
+	const dialog = document.querySelector('.dialog') as HTMLDialogElement;
+	const cards = document.querySelectorAll('.projects__container div');
+
+	cards.forEach(card => {
+		card.addEventListener('click', () => {
+			dialog.showModal();
+		});
+	});
+
+	dialog.addEventListener('click', event => {
+		if (event.target === dialog) {
+			dialog.close();
+		}
+	});
+</script>

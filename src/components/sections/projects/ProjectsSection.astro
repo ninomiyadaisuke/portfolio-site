@@ -31,7 +31,7 @@ const data = [
 		href: 'https://framer-motion-study.vercel.app/',
 		imageData: {
 			src: FramerMotion,
-			alt: 'AssetManage Image'
+			alt: 'FramerMotion Image'
 		}
 	},
 	{
@@ -51,13 +51,11 @@ const data = [
 	<div class="projects__container">
 		{
 			data.map(project => (
-				<a href={project.href} target="_blank" rel="noopener noreferrer">
-					<ProjectCard
-						title={project.title}
-						text={project.text}
-						imageData={project.imageData}
-					/>
-				</a>
+				<ProjectCard
+					title={project.title}
+					text={project.text}
+					imageData={project.imageData}
+				/>
 			))
 		}
 	</div>

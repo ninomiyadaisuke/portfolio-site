@@ -2,12 +2,14 @@
 import Layout from '@components/layouts/Layout.astro';
 import AboutSection from '@components/sections/about/AboutSection.astro';
 import ContactSection from '@components/sections/contact/ContactSection.astro';
+import Dialog from '@components/sections/projects/Dialog.astro';
 import ProjectsSection from '@components/sections/projects/ProjectsSection.astro';
 import ShowCaseSection from '@components/sections/showcase/ShowCase.astro';
 import SkillsSection from '@components/sections/skills/SkillsSection.astro';
 ---
 
-<Layout title="hello">
+<Layout title="Daisuke's Portfolio">
+	<Dialog />
 	<ShowCaseSection />
 	<AboutSection />
 	<SkillsSection />

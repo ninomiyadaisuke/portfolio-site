@@ -1,0 +1,144 @@
+---
+import DialogLayout from '@components/layouts/dialog/DialogLayout.astro';
+import Icon from 'astro-icon';
+---
+
+<button class="openBtn">Open</button>
+<DialogLayout>
+	<div class="container">
+		<div class="container__content">
+			<h4><span>タイトル</span></h4>
+			<p>
+				WordPressの個人ブログを快適に運用するためのシステムをAWSで構築しました。EC2にDockerのコンテナを建てて、そのコンテナの中でWebサーバーを動かしています。S3とEC2をVPCエンドポイントで結び、S3にメディアファイルを保管しています。さらにCronを利用して、コンテナごとS3へぽいぽい自動バックアップする仕組みを作りました。
+			</p>
+
+			<a class="container__link" href="">
+				<Icon class="container__link_icon" pack="mdi" name="github" />
+				<span class="container__link_text">GitHub</span>
+			</a>
+
+			<h5><span>使用言語など</span></h5>
+			<p>
+				Ruby on Rails, HTML/CSS(SASS), Bulma, jQuery, Sqlite（開発), Postgresql（本番）,
+				Heroku, SendGrid
+			</p>
+		</div>
+		<div class="container__images">
+			<ul>
+				<li>
+					<img src="/images/contact_img.jpg" alt="" />
+				</li>
+				<li>
+					<img src="/images/show_case_img.webp" alt="" />
+				</li>
+				<li>
+					<img src="/images/show_case_img.jpg" alt="" />
+				</li>
+			</ul>
+			<div class="container__images_image">
+				<img src="/images/show_case_img.webp" alt="" />
+			</div>
+		</div>
+	</div>
+</DialogLayout>
+
+<style is:global lang="scss">
+	.container {
+		position: relative;
+		font-family: 'M PLUS Rounded 1c', sans-serif;
+		background-color: #fafafa;
+		padding: 20px;
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			h4,
+			h5 {
+				text-align: center;
+				position: relative;
+				z-index: 50;
+				font-size: 20px;
+				&::before {
+					content: '';
+					display: block;
+					border-top: solid 1px #ddd;
+					width: 100%;
+					height: 1px;
+					position: absolute;
+					top: 50%;
+					z-index: 1;
+				}
+				span {
+					background: #fafafa;
+					padding: 0 10px;
+					position: relative;
+					z-index: 5;
+				}
+			}
+			h4 {
+				font-weight: bold;
+			}
+		}
+		&__link {
+			display: flex;
+			&__text {
+				line-height: 1;
+			}
+			&_icon {
+				width: 20px;
+				margin-right: 5px;
+			}
+		}
+		&__images {
+			margin-top: 20px;
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				li {
+					cursor: pointer;
+					padding: 1px;
+					margin-bottom: 20px;
+					width: 75px;
+					img {
+						width: 100%;
+						aspect-ratio: 1 / 1;
+						object-fit: cover;
+						box-shadow:
+							0 4px 5px 0 rgba(0, 0, 0, 0.14),
+							0 1px 10px 0 rgba(0, 0, 0, 0.12),
+							0 2px 4px -1px rgba(0, 0, 0, 0.3);
+					}
+				}
+			}
+		}
+		@include mq('custom900') {
+			display: flex;
+			padding: 50px;
+			gap: 4vw;
+			&__content {
+				flex: 0.4;
+			}
+			&__images {
+				flex: 0.6;
+			}
+		}
+	}
+</style>
+
+<script>
+	const thumbs = document.querySelectorAll(
+		'.container__images li img'
+		// eslint-disable-next-line no-undef
+	) as NodeListOf<HTMLImageElement>;
+
+	const mainImage = document.querySelector(
+		'.container__images_image img'
+	) as HTMLImageElement;
+
+	thumbs.forEach(thumb => {
+		thumb.addEventListener('click', () => {
+			mainImage.src = thumb.src;
+		});
+	});
+</script>

@@ -34,7 +34,7 @@ const { dialogData, index } = Astro.props;
 				{dialogData.subText}
 			</p>
 		</div>
-		<div class="container__images">
+		<div class={`container__images index-${index}`}>
 			<ul>
 				{
 					dialogData.srces.map(src => (
@@ -44,7 +44,7 @@ const { dialogData, index } = Astro.props;
 					))
 				}
 			</ul>
-			<div class="container__images_image">
+			<div class={`container__images_image index-${index}`}>
 				<img src={dialogData.srces[0]} alt="" />
 			</div>
 		</div>
@@ -136,18 +136,21 @@ const { dialogData, index } = Astro.props;
 </style>
 
 <script>
-	const thumbs = document.querySelectorAll(
-		'.container__images li img'
-		// eslint-disable-next-line no-undef
-	) as NodeListOf<HTMLImageElement>;
+	const cards = document.querySelectorAll('.card');
+	cards.forEach((_, index) => {
+		const thumbs = document.querySelectorAll(
+			`.container__images.index-${index + 1} ul li img`
+			// eslint-disable-next-line no-undef
+		) as NodeListOf<HTMLImageElement>;
 
-	const mainImage = document.querySelector(
-		'.container__images_image img'
-	) as HTMLImageElement;
+		const mainImage = document.querySelector(
+			`.container__images_image.index-${index + 1} img`
+		) as HTMLImageElement;
 
-	thumbs.forEach(thumb => {
-		thumb.addEventListener('click', () => {
-			mainImage.src = thumb.src;
+		thumbs.forEach(thumb => {
+			thumb.addEventListener('click', () => {
+				mainImage.src = thumb.src;
+			});
 		});
 	});
 </script>

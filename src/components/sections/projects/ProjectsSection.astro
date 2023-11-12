@@ -4,43 +4,81 @@ import FramerMotion from '@assets/images/projects/framer-motion.png';
 import Portfolio from '@assets/images/projects/portfolio-site.png';
 import SekiSou from '@assets/images/projects/sei_sou_demo.png';
 
+import Dialog from './Dialog.astro';
 import ProjectCard from './ProjectCard.astro';
 
 const data = [
 	{
-		title: 'ポートフォリオ',
-		text: 'このサイトです。AstrojsとReact、Emailjsを使用して作成しました。',
-		href: 'https://portfolio-site-henna-delta.vercel.app/',
 		imageData: {
 			src: Portfolio,
 			alt: 'portfolio image'
+		},
+		dialogData: {
+			title: 'ポートフォリオ',
+			text: 'このサイトです。AstrojsとReact、Emailjsを使用して作成しました。',
+			subText:
+				'Ruby on Rails, HTML/CSS(SASS), Bulma, jQuery, Sqlite（開発), Postgresql（本番）,Heroku, SendGrid',
+			href: 'https://github.com/ninomiyadaisuke/portfolio-site',
+			srces: [
+				'/images/contact_img.jpg',
+				'/images/show_case_img.webp',
+				'/images/show_case_img.jpg'
+			]
 		}
 	},
 	{
-		title: '資産管理アプリ',
-		text: '資産管理アプリです。株式資産を管理するために作成しました。Nextjs、supabaseを使用して作成しました。デモボタンよりログインできます。',
-		href: 'https://assets-management-app.vercel.app/auth/login',
 		imageData: {
 			src: AssetManage,
 			alt: 'AssetManage Image'
+		},
+
+		dialogData: {
+			title: '資産管理アプリ',
+			text: '資産管理アプリです。株式資産を管理するために作成しました。Nextjs、supabaseを使用して作成しました。デモボタンよりログインできます。',
+			subText: '',
+			href: 'https://github.com/ninomiyadaisuke/assets-management-app',
+			srces: [
+				'/images/contact_img.jpg',
+				'/images/show_case_img.webp',
+				'/images/show_case_img.jpg'
+			]
 		}
 	},
 	{
-		title: 'アニメーションサイト',
-		text: 'アニメーションライブラリ「framer-motion」の勉強のために作成しました。Nextjs、Typescript、framer-motionを使用しています。',
-		href: 'https://framer-motion-study.vercel.app/',
 		imageData: {
 			src: FramerMotion,
 			alt: 'FramerMotion Image'
+		},
+
+		dialogData: {
+			title: 'アニメーションサイト',
+			text: 'アニメーションライブラリ「framer-motion」の勉強のために作成しました。Nextjs、Typescript、framer-motionを使用しています。',
+			subText:
+				'Ruby on Rails, HTML/CSS(SASS), Bulma, jQuery, Sqlite（開発), Postgresql（本番）,Heroku, SendGrid',
+			href: 'https://github.com/ninomiyadaisuke/framer-motion-study',
+			srces: [
+				'/images/contact_img.jpg',
+				'/images/show_case_img.webp',
+				'/images/show_case_img.jpg'
+			]
 		}
 	},
 	{
-		title: '積奏 デモサイト',
-		text: '実在のショップサイト「積奏」のデモサイトを作成しました。ベーシック認証を設定しています（ユーザー名：test、パスワード：test1234）。',
-		href: 'https://seki-sou-demo.vercel.app/',
 		imageData: {
 			src: SekiSou,
 			alt: 'Sekisou demo Image'
+		},
+
+		dialogData: {
+			title: '積奏 デモサイト',
+			text: '実在のショップサイト「積奏」のデモサイトを作成しました。ベーシック認証を設定しています（ユーザー名：test、パスワード：test1234）。',
+			subText: '',
+			href: 'https://github.com/ninomiyadaisuke/seki-sou-demo',
+			srces: [
+				'/images/contact_img.jpg',
+				'/images/show_case_img.webp',
+				'/images/show_case_img.jpg'
+			]
 		}
 	}
 ];
@@ -50,12 +88,11 @@ const data = [
 	<h2>My Projects</h2>
 	<div class="projects__container">
 		{
-			data.map(project => (
-				<ProjectCard
-					title={project.title}
-					text={project.text}
-					imageData={project.imageData}
-				/>
+			data.map((project, index) => (
+				<>
+					<ProjectCard imageData={project.imageData} />
+					<Dialog dialogData={project.dialogData} index={index + 1} />
+				</>
 			))
 		}
 	</div>

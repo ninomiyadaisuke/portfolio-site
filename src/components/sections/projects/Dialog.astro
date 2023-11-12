@@ -1,42 +1,51 @@
 ---
 import DialogLayout from '@components/layouts/dialog/DialogLayout.astro';
 import Icon from 'astro-icon';
+
+type Props = {
+	dialogData: {
+		title: string;
+		subText: string;
+		text: string;
+		href: string;
+		srces: string[];
+	};
+	index: number;
+};
+
+const { dialogData, index } = Astro.props;
 ---
 
-<button class="openBtn">Open</button>
-<DialogLayout>
+<DialogLayout index={index}>
 	<div class="container">
 		<div class="container__content">
-			<h4><span>タイトル</span></h4>
+			<h4><span>{dialogData.title}</span></h4>
 			<p>
-				WordPressの個人ブログを快適に運用するためのシステムをAWSで構築しました。EC2にDockerのコンテナを建てて、そのコンテナの中でWebサーバーを動かしています。S3とEC2をVPCエンドポイントで結び、S3にメディアファイルを保管しています。さらにCronを利用して、コンテナごとS3へぽいぽい自動バックアップする仕組みを作りました。
+				{dialogData.text}
 			</p>
 
-			<a class="container__link" href="">
+			<a class="container__link" href={dialogData.href}>
 				<Icon class="container__link_icon" pack="mdi" name="github" />
 				<span class="container__link_text">GitHub</span>
 			</a>
 
 			<h5><span>使用言語など</span></h5>
 			<p>
-				Ruby on Rails, HTML/CSS(SASS), Bulma, jQuery, Sqlite（開発), Postgresql（本番）,
-				Heroku, SendGrid
+				{dialogData.subText}
 			</p>
 		</div>
 		<div class="container__images">
 			<ul>
-				<li>
-					<img src="/images/contact_img.jpg" alt="" />
-				</li>
-				<li>
-					<img src="/images/show_case_img.webp" alt="" />
-				</li>
-				<li>
-					<img src="/images/show_case_img.jpg" alt="" />
-				</li>
+				{
+					dialogData.srces.map(src => (
+						<li>
+							<img src={src} alt="" />
+						</li>
+					))
+				}
 			</ul>
 			<div class="container__images_image">
-				<img src="/images/show_case_img.webp" alt="" />
+				<img src={dialogData.srces[0]} alt="" />
 			</div>
 		</div>
 	</div>

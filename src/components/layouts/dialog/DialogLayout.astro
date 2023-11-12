@@ -1,8 +1,12 @@
 ---
+type Props = {
+	index: number;
+};
 
+const { index } = Astro.props;
 ---
 
-<dialog class="dialog">
+<dialog class={`dialog index-${index}`}>
 	<slot />
 </dialog>
 
@@ -30,18 +34,22 @@
 </style>
 
 <script>
-	const dialog = document.querySelector('.dialog') as HTMLDialogElement;
-	const cards = document.querySelectorAll('.projects__container div');
-
-	cards.forEach(card => {
+	const dialogs = document.querySelectorAll('dialog');
+	const cards = document.querySelectorAll('.card');
+	cards.forEach((card, index) => {
 		card.addEventListener('click', () => {
+			const dialog = document.querySelector(
+				`.dialog.index-${index + 1}`
+			) as HTMLDialogElement;
 			dialog.showModal();
 		});
 	});
 
-	dialog.addEventListener('click', event => {
-		if (event.target === dialog) {
-			dialog.close();
-		}
+	dialogs.forEach(dialog => {
+		dialog.addEventListener('click', event => {
+			if (event.target === dialog) {
+				dialog.close();
+			}
+		});
 	});
 </script>

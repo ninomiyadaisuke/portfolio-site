@@ -1,0 +1,156 @@
+---
+import DialogLayout from '@components/layouts/dialog/DialogLayout.astro';
+import Icon from 'astro-icon';
+
+type Props = {
+	dialogData: {
+		title: string;
+		subText: string;
+		text: string;
+		href: string;
+		srces: string[];
+	};
+	index: number;
+};
+
+const { dialogData, index } = Astro.props;
+---
+
+<DialogLayout index={index}>
+	<div class="container">
+		<div class="container__content">
+			<h4><span>{dialogData.title}</span></h4>
+			<p>
+				{dialogData.text}
+			</p>
+
+			<a class="container__link" href={dialogData.href}>
+				<Icon class="container__link_icon" pack="mdi" name="github" />
+				<span class="container__link_text">GitHub</span>
+			</a>
+
+			<h5><span>使用言語など</span></h5>
+			<p>
+				{dialogData.subText}
+			</p>
+		</div>
+		<div class={`container__images index-${index}`}>
+			<ul>
+				{
+					dialogData.srces.map(src => (
+						<li>
+							<img src={src} alt="" />
+						</li>
+					))
+				}
+			</ul>
+			<div class={`container__images_image index-${index}`}>
+				<img src={dialogData.srces[0]} alt="" />
+			</div>
+		</div>
+	</div>
+</DialogLayout>
+
+<style is:global lang="scss">
+	.container {
+		position: relative;
+		font-family: 'M PLUS Rounded 1c', sans-serif;
+		background-color: #fafafa;
+		padding: 20px;
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			h4,
+			h5 {
+				text-align: center;
+				position: relative;
+				z-index: 50;
+				font-size: 20px;
+				&::before {
+					content: '';
+					display: block;
+					border-top: solid 1px #ddd;
+					width: 100%;
+					height: 1px;
+					position: absolute;
+					top: 50%;
+					z-index: 1;
+				}
+				span {
+					background: #fafafa;
+					padding: 0 10px;
+					position: relative;
+					z-index: 5;
+				}
+			}
+			h4 {
+				font-weight: bold;
+			}
+		}
+		&__link {
+			display: flex;
+			&__text {
+				line-height: 1;
+			}
+			&_icon {
+				width: 20px;
+				margin-right: 5px;
+			}
+		}
+		&__images {
+			margin-top: 20px;
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				li {
+					cursor: pointer;
+					padding: 1px;
+					margin-bottom: 20px;
+					width: 75px;
+					img {
+						width: 100%;
+						aspect-ratio: 1 / 1;
+						object-fit: cover;
+						box-shadow:
+							0 4px 5px 0 rgba(0, 0, 0, 0.14),
+							0 1px 10px 0 rgba(0, 0, 0, 0.12),
+							0 2px 4px -1px rgba(0, 0, 0, 0.3);
+					}
+				}
+			}
+		}
+		@include mq('custom900') {
+			display: flex;
+			padding: 50px;
+			gap: 4vw;
+			&__content {
+				flex: 0.4;
+			}
+			&__images {
+				flex: 0.6;
+			}
+		}
+	}
+</style>
+
+<script>
+	const cards = document.querySelectorAll('.card');
+	cards.forEach((_, index) => {
+		const thumbs = document.querySelectorAll(
+			`.container__images.index-${index + 1} ul li img`
+			// eslint-disable-next-line no-undef
+		) as NodeListOf<HTMLImageElement>;
+
+		const mainImage = document.querySelector(
+			`.container__images_image.index-${index + 1} img`
+		) as HTMLImageElement;
+
+		thumbs.forEach(thumb => {
+			thumb.addEventListener('click', () => {
+				mainImage.src = thumb.src;
+			});
+		});
+	});
+</script>

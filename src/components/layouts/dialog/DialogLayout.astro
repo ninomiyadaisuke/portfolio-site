@@ -1,0 +1,55 @@
+---
+type Props = {
+	index: number;
+};
+
+const { index } = Astro.props;
+---
+
+<dialog class={`dialog index-${index}`}>
+	<slot />
+</dialog>
+
+<style lang="scss">
+	.dialog {
+		width: 80%;
+		border: 0;
+		position: fixed;
+		inset: 0;
+		padding: 0;
+		transition: opacity 0.3s ease-in-out;
+		@include mq('custom900') {
+			width: 90%;
+		}
+	}
+	.dialog:not([open]) {
+		opacity: 0;
+	}
+	.dialog::backdrop {
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+	html:has(dialog[open]) {
+		overflow: hidden;
+	}
+</style>
+
+<script>
+	const dialogs = document.querySelectorAll('dialog');
+	const cards = document.querySelectorAll('.card');
+	cards.forEach((card, index) => {
+		card.addEventListener('click', () => {
+			const dialog = document.querySelector(
+				`.dialog.index-${index + 1}`
+			) as HTMLDialogElement;
+			dialog.showModal();
+		});
+	});
+
+	dialogs.forEach(dialog => {
+		dialog.addEventListener('click', event => {
+			if (event.target === dialog) {
+				dialog.close();
+			}
+		});
+	});
+</script>

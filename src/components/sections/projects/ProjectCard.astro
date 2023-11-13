@@ -3,8 +3,6 @@ import ResponsiveImage from '@components/ui/image/ResponsiveImage.astro';
 import type { ImageMetadata } from 'astro';
 
 type Props = {
-	title: string;
-	text: string;
 	imageData: {
 		src: ImageMetadata;
 		alt: string;
@@ -15,104 +13,35 @@ type Props = {
 	};
 };
 
-const { imageData, text, title } = Astro.props;
+const { imageData } = Astro.props;
 ---
 
 <div class="card">
-	<div class="card__img">
-		<ResponsiveImage
-			src={imageData.src}
-			alt={imageData.alt}
-			widths={imageData.widths}
-			sizes={imageData.sizes}
-			loading={imageData.loading}
-			decoding={imageData.decoding}
-		/>
-	</div>
-	<div class="card__content">
-		<h3>{title}</h3>
-		<p>
-			{text}
-		</p>
-	</div>
+	<ResponsiveImage
+		src={imageData.src}
+		alt={imageData.alt}
+		widths={imageData.widths}
+		sizes={imageData.sizes}
+		loading={imageData.loading}
+		decoding={imageData.decoding}
+	/>
 </div>
 
 <style lang="scss" is:global>
 	.card {
 		padding: 2vw;
-		position: relative;
-		display: block;
 		cursor: pointer;
-		&__img {
+		img {
+			aspect-ratio: 16 / 9;
 			height: 100%;
 			width: 100%;
-			img {
-				aspect-ratio: 16 / 9;
-				height: 100%;
-				width: 100%;
-				object-fit: cover;
-				transition: all 0.35s ease-in-out;
-			}
-		}
-		h3 {
-			font-size: 30px;
-			text-transform: uppercase;
-		}
-		h3,
-		p {
-			font-family: 'M PLUS Rounded 1c', sans-serif;
-		}
-		&__content {
-			padding: 1vw;
-			color: var(--white);
-			position: absolute;
-			top: 0;
-			height: 100%;
-			width: 100%;
-			background-color: var(--tertiary-color-m);
-			transform-origin: bottom;
-			left: 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: flex-end;
-			transform: scaleY(0);
-			transition: transform 0.35s ease-in-out;
-		}
-		&:hover .card__content {
-			transform: scaleY(1);
-			transform-origin: top;
+			object-fit: cover;
+			transition: all 0.35s ease-in-out;
 		}
 
-		&:hover .card__img img {
+		&:hover img {
 			transform: scaleY(0.98);
 			filter: grayscale(50%);
-		}
-
-		@include mq('md') {
-			&__content {
-				height: auto;
-				top: 40%;
-				width: 80%;
-				max-width: 460px;
-			}
-		}
-		@include mq('custom900') {
-			&__content {
-				bottom: 0;
-				top: calc(70px + 180 * (100vw - 900px) / 700);
-				padding: 2vw;
-			}
-			h3 {
-				font-size: calc(20px + 10 * (100vw - 900px) / 700);
-			}
-		}
-		@include mq('custom1600') {
-			&__content {
-				top: 250px;
-			}
-			h3 {
-				font-size: 30px;
-			}
 		}
 	}
 </style>

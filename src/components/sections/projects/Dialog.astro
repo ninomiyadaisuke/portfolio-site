@@ -8,6 +8,7 @@ type Props = {
 		subText: string;
 		text: string;
 		href: string;
+		githubHref: string;
 		srces: string[];
 	};
 	index: number;
@@ -24,7 +25,7 @@ const { dialogData, index } = Astro.props;
 				{dialogData.text}
 			</p>
 
-			<a class="container__link" href={dialogData.href}>
+			<a class="container__link" href={dialogData.githubHref}>
 				<Icon class="container__link_icon" pack="mdi" name="github" />
 				<span class="container__link_text">GitHub</span>
 			</a>
@@ -44,9 +45,14 @@ const { dialogData, index } = Astro.props;
 					))
 				}
 			</ul>
-			<div class={`container__images_image index-${index}`}>
+			<a
+				href={dialogData.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				class={`container__images_image index-${index}`}
+			>
 				<img src={dialogData.srces[0]} alt="" />
-			</div>
+			</a>
 		</div>
 	</div>
 </DialogLayout>
